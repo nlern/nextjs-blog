@@ -16,13 +16,18 @@ export default function Home({ allPostsData }) {
         </p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
+        <h2 className={utilStyles.headingLg}>Posts</h2>
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
+            <li
+              className={utilStyles.listItem}
+              key={id}
+              className='transition delay-150 ease-in-out p-4 mb-2 shadow hover:shadow-lg'
+            >
               <Link href={`/posts/${id}`}>
                 <a>{title}</a>
               </Link>
+              <br />
               <br />
               {date}
             </li>
