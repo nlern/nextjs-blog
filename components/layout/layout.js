@@ -6,7 +6,8 @@ import Footer from '../footer/footer';
 
 import layoutStyles from './layout.module.css';
 
-export const siteTitle = 'Blog';
+const name = 'Shantanu';
+export const siteTitle = `${name}'s Blog`;
 
 export default function Layout({ children, home, title }) {
   return (
@@ -29,7 +30,7 @@ export default function Layout({ children, home, title }) {
         <meta name='og:title' content={siteTitle} />
         <meta name='twitter:card' content='summary_large_image' />
       </Head>
-      <Header home={home} />
+      <Header home={home} name={name} />
       <div className={layoutStyles.container}>
         {!home && (
           <div className={layoutStyles.backToHome}>
