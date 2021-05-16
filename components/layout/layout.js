@@ -29,8 +29,8 @@ export default function Layout({ children, home, title }) {
         <meta name='og:title' content={siteTitle} />
         <meta name='twitter:card' content='summary_large_image' />
       </Head>
+      <Header home={home} />
       <div className={layoutStyles.container}>
-        <Header home={home} />
         {!home && (
           <div className={layoutStyles.backToHome}>
             <Link href='/'>
@@ -50,8 +50,8 @@ export default function Layout({ children, home, title }) {
             <br />
           </>
         )}
-        <Footer />
       </div>
+      <Footer />
     </>
   );
 }
