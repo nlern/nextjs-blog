@@ -5,11 +5,14 @@ import { getAllPostIds, getPostData } from '../../lib/posts';
 export default function Post({ postData }) {
   return (
     <Layout title={postData.title}>
-      {postData.id}
-      <br />
       {postData.title}
       <br />
       {postData.date}
+      <br />
+      <div
+        dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+        className='mt-4'
+      />
     </Layout>
   );
 }
@@ -24,7 +27,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const postData = getPostData(params.id);
+  const postData = await getPostData(params.id);
   return {
     props: {
       postData,
