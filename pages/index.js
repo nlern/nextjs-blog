@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import Layout from '../components/layout/layout';
+import Date from '../components/date';
 
 import utilStyles from '../styles/utils.module.css';
 
@@ -27,9 +28,11 @@ export default function Home({ allPostsData }) {
               <Link href={`/posts/${id}`}>
                 <a>{title}</a>
               </Link>
-              <br />
-              <br />
-              {date}
+              <div className={utilStyles.lightText}>
+                <small>
+                  <Date dateString={date} />
+                </small>
+              </div>
             </li>
           ))}
         </ul>

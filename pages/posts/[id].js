@@ -1,18 +1,23 @@
 import Layout from '../../components/layout/layout';
+import Date from '../../components/date';
+
+import utilStyles from '../../styles/utils.module.css';
 
 import { getAllPostIds, getPostData } from '../../lib/posts';
 
 export default function Post({ postData }) {
   return (
     <Layout title={postData.title}>
-      {postData.title}
-      <br />
-      {postData.date}
-      <br />
-      <div
-        dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
-        className='mt-4'
-      />
+      <article>
+        <h1 className={utilStyles.headingXl}>{postData.title}</h1>
+        <div className={utilStyles.lightText}>
+          <Date dateString={postData.date} />
+        </div>
+        <div
+          dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+          className='mt-2'
+        />
+      </article>
     </Layout>
   );
 }
