@@ -1,11 +1,19 @@
 import Layout from '../../components/layout/layout';
-import Date from '../../components/date';
+import Date from '../../components/date/date';
 
 import utilStyles from '../../styles/utils.module.css';
 
 import { getAllPostIds, getPostData } from '../../lib/posts';
 
-export default function Post({ postData }) {
+interface PostProps {
+  postData: {
+    title: string;
+    date: string;
+    contentHtml: string;
+  };
+}
+
+export default function Post({ postData }: PostProps) {
   return (
     <Layout title={postData.title}>
       <article>
@@ -15,7 +23,7 @@ export default function Post({ postData }) {
         </div>
         <div
           dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
-          className='mt-2'
+          className="mt-2"
         />
       </article>
     </Layout>

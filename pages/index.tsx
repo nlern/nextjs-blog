@@ -1,19 +1,24 @@
 import Link from 'next/link';
 
 import Layout from '../components/layout/layout';
-import Date from '../components/date';
+import Date from '../components/date/date';
 
 import utilStyles from '../styles/utils.module.css';
 
 import { getSortedPostsData } from '../lib/posts';
 
-export default function Home({ allPostsData }) {
+interface HomeProps {
+  allPostsData: { id: string; title: string; date: string }[];
+}
+
+export default function Home({ allPostsData }: HomeProps) {
   return (
-    <Layout title='Home' home>
+    <Layout title="Home" home>
       <section className={utilStyles.headingMd}>
         <p>
-          Hello, I'm <strong>Shantanu</strong>! I am a Frontend Web Developer.
-          You can contact me on Twitter.
+          Hello, I am
+          <strong>Shantanu</strong>! I am a Frontend Web Developer. You can
+          contact me on Twitter.
         </p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
@@ -21,12 +26,11 @@ export default function Home({ allPostsData }) {
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
             <li
-              className={utilStyles.listItem}
               key={id}
-              className='transition delay-150 ease-in-out p-4 mb-2 shadow hover:shadow-lg'
+              className={`${utilStyles.listItem} transition delay-150 ease-in-out p-4 mb-2 shadow hover:shadow-lg`}
             >
-              <Link href={`/posts/${id}`}>
-                <a>{title}</a>
+              <Link href={`/posts/${id}`} passHref>
+                <a href="posts">{title}</a>
               </Link>
               <div className={utilStyles.lightText}>
                 <small>

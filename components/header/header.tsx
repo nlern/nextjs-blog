@@ -3,12 +3,16 @@ import Image from 'next/image';
 import headerStyles from './header.module.css';
 import utilStyles from '../../styles/utils.module.css';
 
-export default function Header({name}) {
+interface HeaderProps {
+  name: string;
+}
+
+export default function Header({ name }: HeaderProps) {
   return (
     <header className={headerStyles.header}>
       <Image
         priority
-        src='/images/profile.jpg'
+        src="/images/profile.jpg"
         className={utilStyles.borderCircle}
         height={144}
         width={144}
